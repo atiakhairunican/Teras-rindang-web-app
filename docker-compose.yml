@@ -21,7 +21,7 @@ services:
         depends_on:
             - postgres
     nodejs:
-        image: atiakhairunican/Teras-rindang-backend:main
+        image: atiakhairunican/teras-rindang-backend:main
         ports:
             - 9001-9002:9000
         env_file:
