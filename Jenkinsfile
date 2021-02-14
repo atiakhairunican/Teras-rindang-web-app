@@ -5,13 +5,6 @@ def builder
 pipeline {
     agent any
 
-    parameters {
-        choice(
-            choices: ['dev', 'prod'],
-            description: '',
-            name: 'REQUESTED_ACTION')
-    }
-
     stages {
         stage("Install dependencies") {
             steps {
@@ -48,11 +41,6 @@ pipeline {
         }
 
         stage("Development") {
-            when {
-                expression {
-                    params.REQUESTED_ACTION == 'dev'
-                }
-            }
             steps {
                 script {
                     sshPublisher(
@@ -62,33 +50,7 @@ pipeline {
                                 verbose: true,
                                 transfers: [
                                     sshTransfer(
-                                        execCommand: "cd /home/atia/development/backend; docker-compose down; docker-compose up -d",
-                                        execTimeout: 1500000
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                }
-            }
-        }
-
-        stage("Production") {
-            when {
-                expression {
-                    params.REQUESTED_ACTION == 'prod'
-                }
-            }
-            steps {
-                script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: "teras-rindang-prod",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        execCommand: "cd /home/atia/production/backend; docker-compose down; docker-compose up -d",
+                                        execCommand: "cd /home/atia/development/backend; docker pull ${image_name}; docker-compose down; docker-compose up -d",
                                         execTimeout: 1500000
                                     )
                                 ]
