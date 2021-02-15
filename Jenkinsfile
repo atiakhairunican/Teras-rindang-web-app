@@ -1,5 +1,5 @@
 def dockerhub = "atiakhairunican/teras-rindang-backend"
-def image_name = "${dockerhub}:dev"
+def image_name = "${dockerhub}:${BRANCH_NAME}"
 def builder
 
 pipeline {
