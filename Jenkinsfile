@@ -1,4 +1,4 @@
-def dockerhub = "atiakhairunican/teras-rindang-backend"
+def dockerhub = "atiakhairunican/jenkinsback"
 def image_name = "${dockerhub}:${BRANCH_NAME}"
 def builder
 
