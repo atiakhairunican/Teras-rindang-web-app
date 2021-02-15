@@ -50,7 +50,7 @@ pipeline {
                                 verbose: true,
                                 transfers: [
                                     sshTransfer(
-                                        execCommand: "cd /home/atia/development/backend; docker pull ${image_name}; docker-compose down; docker-compose up -d",
+                                        execCommand: "cd /home/atia/development/backend; docker-compose down; docker pull ${image_name}; docker-compose up -d",
                                         execTimeout: 1500000
                                     )
                                 ]
