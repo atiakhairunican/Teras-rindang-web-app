@@ -46,7 +46,7 @@ pipeline {
                     sshPublisher(
                         publishers: [
                             sshPublisherDesc(
-                                configName: "teras-rindang-dev",
+                                configName: "terasdev",
                                 verbose: true,
                                 transfers: [
                                     sshTransfer(
