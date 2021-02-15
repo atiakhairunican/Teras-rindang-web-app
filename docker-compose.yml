@@ -5,7 +5,7 @@ services:
         ports:
             - 5151:5432
         volumes:
-            - ./pgdata:/var/lib/postgresql/data
+            - /home/atia/development/pgdata:/var/lib/postgresql/data
         networks:
             - dockernet
         environment:
@@ -21,7 +21,7 @@ services:
         depends_on:
             - postgres
     nodejs:
-        image: atiakhairunican/teras-rindang-backend:dev
+        image: atiakhairunican/teras-rindang-backend:main
         ports:
             - 9001-9002:9000
         env_file:
