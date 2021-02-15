@@ -5,7 +5,7 @@ services:
         ports:
             - 5151:5432
         volumes:
-            - /home/atia/development/pgdata:/var/lib/postgresql/data
+            - ./pgdata:/var/lib/postgresql/data
         networks:
             - dockernet
         environment:
@@ -30,7 +30,7 @@ services:
             - dockernet
         depends_on:
             - postgres
-        mem_limit: 100M
+        mem_limit: 200M
         cpus: "0.5"
         deploy:
             mode: replicated
