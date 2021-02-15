@@ -5,7 +5,7 @@ services:
         ports:
             - 5151:5432
         volumes:
-            - ./pgdata:/var/lib/postgresql/data
+            - /home/atia/development/pgdata:/var/lib/postgresql/data
         networks:
             - dockernet
         environment:
