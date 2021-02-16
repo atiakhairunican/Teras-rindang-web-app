@@ -10,8 +10,8 @@ services:
             - dockernet
         environment:
             - POSTGRES_PASSWORD=A020197kc
-            - POSTGRES_USER=atia
-            - POSTGRES_DB=teras
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=sequelize
     redis:
         image: redis:latest
         ports:
