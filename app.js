@@ -18,7 +18,7 @@ server.use(bodyPars.json())
 server.use(morgan("dev"))
 server.use(cors())
 server.use("/public", express.static("public"))
-server.use("/api", router)
+server.use("/terasApi", router)
 
 redis.redisCheck()
     .then((res) => {
