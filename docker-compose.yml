@@ -3,7 +3,7 @@ services:
     postgres:
         image: postgres:latest
         ports:
-            - 5353:5432
+            - 5151:5432
         volumes:
             - /home/atia/development/pgdata:/var/lib/postgresql/data
         networks:
@@ -15,7 +15,7 @@ services:
     redis:
         image: redis:latest
         ports:
-            - 6363:6379
+            - 6161:6379
         networks:
             - dockernet
         depends_on:
@@ -30,7 +30,7 @@ services:
             - dockernet
         depends_on:
             - postgres
-        mem_limit: 200M
+        mem_limit: 300M
         cpus: "0.5"
         deploy:
             mode: replicated
