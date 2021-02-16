@@ -31,7 +31,7 @@ class Products {
             }
             req.body.image = await cloudUpload(req.file.path)
             const result = await model.addProducts(req.body)
-            redisdb.del("product")
+            redisdb.del("terasproducts")
             loggers.info("Add product was successfull", result)
             return respon(res, 200, result)
         } catch (error) {
@@ -44,7 +44,7 @@ class Products {
         try {
             const result = await model.getProducts()
             const saveRedis = JSON.stringify(result)
-            redisdb.setex("products", 60, saveRedis)
+            redisdb.setex("terasproducts", 3600, saveRedis)
             loggers.info("Get product from postgres", result)
             return respon(res, 200, result)
         } catch (error) {
@@ -101,7 +101,7 @@ class Products {
             req.body.id = nameAsId[0].id_product
             req.body.image = await cloudUpload(req.file.path)
             const result = await model.updateProducts(req.body)
-            redisdb.del("product")
+            redisdb.del("terasproducts")
             loggers.info("Update product was successfull", result)
             return respon(res, 200, result)
         } catch (error) {
@@ -113,7 +113,7 @@ class Products {
     async del(req, res) {
         try {
             const result = await model.delProducts(req.query.name)
-            redisdb.del("product")
+            redisdb.del("terasproducts")
             loggers.info("Product was deleted", result)
             return respon(res, 200, result)
         } catch (error) {

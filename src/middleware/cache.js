@@ -3,7 +3,7 @@ const { redisdb } = require("../Configs/redis")
 const loggers = require("../Configs/wins")
 
 const getAll = (req, res, next) => {
-    redisdb.get("products", (err, data) => {
+    redisdb.get("terasproducts", (err, data) => {
         if (err) {
             loggers.warn("Redis doesn't get data", err)
             return respone(res, 500, err)

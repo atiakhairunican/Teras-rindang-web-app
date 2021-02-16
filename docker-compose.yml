@@ -3,19 +3,19 @@ services:
     postgres:
         image: postgres:latest
         ports:
-            - 5151:5432
+            - 5353:5432
         volumes:
             - /home/atia/development/pgdata:/var/lib/postgresql/data
         networks:
             - dockernet
         environment:
-            - POSTGRES_PASSWORD=A020197kc
+            - POSTGRES_PASSWORD=yuhagasiri44
             - POSTGRES_USER=postgres
-            - POSTGRES_DB=sequelize
+            - POSTGRES_DB=teras
     redis:
         image: redis:latest
         ports:
-            - 6161:6379
+            - 6363:6379
         networks:
             - dockernet
         depends_on:
