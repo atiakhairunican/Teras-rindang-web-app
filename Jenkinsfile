@@ -40,25 +40,25 @@ pipeline {
             }
         }
 
-        stage("Development") {
-            steps {
-                script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: "terasdev",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        execCommand: "cd /home/atia/development/backend; docker-compose down; docker pull ${image_name}; docker-compose up -d",
-                                        execTimeout: 1500000
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                }
-            }
-        }
+        // stage("Development") {
+        //     steps {
+        //         script {
+        //             sshPublisher(
+        //                 publishers: [
+        //                     sshPublisherDesc(
+        //                         configName: "terasdev",
+        //                         verbose: true,
+        //                         transfers: [
+        //                             sshTransfer(
+        //                                 execCommand: "cd /home/atia/development/backend2; docker-compose down; docker pull ${image_name}; docker-compose up -d",
+        //                                 execTimeout: 1500000
+        //                             )
+        //                         ]
+        //                     )
+        //                 ]
+        //             )
+        //         }
+        //     }
+        // }
     }
 }
