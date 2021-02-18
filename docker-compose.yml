@@ -1,11 +1,25 @@
 version: "3.6"
 services:
+    postgres:
+        image: postgres:latest
+        ports:
+            - 5151:5432
+        volumes:
+            - /home/atia/development/pgdata:/var/lib/postgresql/data
+        networks:
+            - dockernet
+        environment:
+            - POSTGRES_PASSWORD=A020197kc
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=sequelize
     redis:
         image: redis:latest
         ports:
             - 6161:6379
         networks:
             - dockernet
+        depends_on:
+            - postgres
     nodejs:
         image: atiakhairunican/teras-rindang-backend:main
         ports:
@@ -15,8 +29,8 @@ services:
         networks:
             - dockernet
         depends_on:
-            - redis
-        mem_limit: 500M
+            - postgres
+        mem_limit: 300M
         cpus: "0.5"
         deploy:
             mode: replicated
