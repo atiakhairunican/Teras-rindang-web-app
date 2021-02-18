@@ -6,8 +6,6 @@ services:
             - 6161:6379
         networks:
             - dockernet
-        depends_on:
-            - postgres
     nodejs:
         image: atiakhairunican/teras-rindang-backend:main
         ports:
